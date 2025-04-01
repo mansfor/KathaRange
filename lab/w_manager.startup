@@ -9,6 +9,9 @@ echo 'nameserver 1.1.1.1' >> /etc/resolv.conf
 echo $INDEXER_IP wazuh.indexer >> /etc/hosts
 echo $MANAGER_IP wazuh.manager >> /etc/hosts
 
+cp /shared/snort3/rules/snort3-community.rules /var/ossec/etc/rules/
 cp /shared/snort3_syslog_decoder.xml /var/ossec/etc/decoders/
+#cp /shared/0240-ids_rules.xml /var/ossec/ruleset/rules/
 ./var/ossec/active-response/bin/restart.sh manager
 
+/bin/bash /shared/scripts/export_snort_logs.sh &
