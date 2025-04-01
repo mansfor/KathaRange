@@ -28,5 +28,6 @@ cp /shared/scripts/command_inj.cpp /shared/caldera/data/payloads/command_inj.cpp
 
 cp /shared/caldera/local.yml /usr/src/app/conf/
 cp -r /shared/caldera/data/* /usr/src/app/data/
+cp -r /shared/caldera/app/* /usr/src/app/
 
 python3 server.py &
