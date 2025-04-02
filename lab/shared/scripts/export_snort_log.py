@@ -61,4 +61,4 @@ if __name__ == '__main__':
         print(f"Snort's logs exported in {output_csv_path}")
         
     except:
-        print("Something went wrong...")
+        print("")
