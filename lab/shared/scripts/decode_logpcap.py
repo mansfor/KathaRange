@@ -146,7 +146,7 @@ def jitter(timestamps):
 def interArrival(timestamps):
     if len(timestamps)>1:
         deltas = [timestamps[i+1]-timestamps[i] for i in range(len(timestamps) - 1)]
-        arrival = sum(deltas)/max(len(deltas),1)
+        arrival = abs(sum(deltas)/max(len(deltas),1))
         return 1000*arrival
     else: return '-'
 
@@ -312,8 +312,8 @@ def unsw_nb15_features(temp_file, output_csv):
                 'Djit': jitter(conn_data['djittimes']), # dest jitter
                 'Stime': conn_data['start_time'], # timestamp of the first packet
                 'Ltime': conn_data['end_time'], # timestamp of the last packet
-                'Sintpkt': abs(interArrival(conn_data['sjittimes'])), # average time between a packet and the next one from the src
-                'Dintpkt': abs(interArrival(conn_data['djittimes'])), # average time between a packet and the next one from the dest
+                'Sintpkt': interArrival(conn_data['sjittimes']), # average time between a packet and the next one from the src
+                'Dintpkt': interArrival(conn_data['djittimes']), # average time between a packet and the next one from the dest
                 'tcprtt': conn_data['tcprtt'], # round trip time
                 'syn_time': conn_data['syn_time'], # timestamp of the ack packet
                 'synack': conn_data['synack'], # timestamp of the synack packet
@@ -330,7 +330,7 @@ def unsw_nb15_features(temp_file, output_csv):
     print(f"Features saved in: {output_csv}")
 
 if __name__ == '__main__':
-    temp = create_temp_pcap('../logs/log.pcap.1739961368')
+    temp = create_temp_pcap('../logs/log.pcap.1743610739')
     if temp != "": 
         unsw_nb15_features(temp,'../logs/unsw_nb15.csv')
     clear_tmp(temp)

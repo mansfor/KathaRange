@@ -34,7 +34,7 @@ int main(){
             else command = "hping3 --udp -c "+std::to_string(rnd_cnt(r_eng))+" "+ ip_addr;
         }
         else if(op < 70){
-            command = "scp admin@"+ip_addr+" /shared/foo.txt";
+            command = "scp admin@"+ip_addr+" /shared/scripts/foo.txt";
         }
         else if(op < 90){
             command = "timeout 5 telnet "+ip_addr;
